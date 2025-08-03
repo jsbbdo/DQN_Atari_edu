@@ -1,0 +1,31 @@
+use_ddqn: True
+env_name: "BreakoutNoFrameskip-v4"
+replay_buffer_size: 100000
+
+#setup some parameters for training
+timesteps_per_epoch: 100
+batch_size: 32
+
+total_steps: 5000
+# total_steps = 3 * 10**6
+# We will train only for a sample of 100 steps
+# To train the full network on a CPU will take hours.
+# infact even GPU training will be fairly long
+# Those who have access to powerful machines with GPU could
+# try training it over 3-5 million steps or so
+
+
+# set exploration epsilon
+start_epsilon: 1
+end_epsilon: 0.05
+eps_decay_final_step: 1000000
+
+# setup some frequency for logging and updating target network
+loss_freq: 100
+# change this to 100 if total_steps = 3*10**6
+refresh_target_network_freq: 100 
+#change this to 1000 if total_steps = 3*10**6
+eval_freq: 1000
+
+# to clip the gradients
+max_grad_norm: 5000
